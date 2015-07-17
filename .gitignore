@@ -1,0 +1,10 @@
+gua3d
+gua3d.exe
+
+# Mac hidden files
+__MACOSX
+.DS_Store
+
+# Windows Mingw output
+stdout.txt
+
