@@ -1,6 +1,6 @@
 #include <SDL/SDL.h>
 
-#include "window.h"
+#include "../../src/window.h"
 
 int
 main(int argc, char *argv[]) {
