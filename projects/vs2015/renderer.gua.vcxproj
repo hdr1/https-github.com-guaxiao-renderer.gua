@@ -68,12 +68,12 @@
       <SubSystem>Console</SubSystem>
       <EntryPointSymbol>
       </EntryPointSymbol>
-      <AdditionalLibraryDirectories>$(ProjectDir)..\..\platform\win\SDL-1.2.15\$(PlatformTarget)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(ProjectDir)..\..\platform\win\SDL-1.2.15\vs2015-$(PlatformTarget)</AdditionalLibraryDirectories>
       <AdditionalDependencies>SDL.lib;SDLmain.lib</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Message>copy dlls</Message>
-      <Command>copy $(ProjectDir)..\..\platform\win\SDL-1.2.15\$(PlatformTarget)\*.dll $(ProjectDir)$(Configuration)</Command>
+      <Command>copy $(ProjectDir)..\..\platform\win\SDL-1.2.15\vs2015-$(PlatformTarget)\*.dll $(ProjectDir)$(Configuration)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -91,11 +91,11 @@
       <OptimizeReferences>true</OptimizeReferences>
       <SubSystem>Windows</SubSystem>
       <AdditionalDependencies>SDL.lib;SDLmain.lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(ProjectDir)..\..\platform\win\SDL-1.2.15\$(PlatformTarget)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(ProjectDir)..\..\platform\win\SDL-1.2.15\vs2015-$(PlatformTarget)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
       <Message>copy dlls</Message>
-      <Command>copy $(ProjectDir)..\..\platform\win\SDL-1.2.15\$(PlatformTarget)\*.dll $(ProjectDir)$(Configuration)</Command>
+      <Command>copy $(ProjectDir)..\..\platform\win\SDL-1.2.15\vs2015-$(PlatformTarget)\*.dll $(ProjectDir)$(Configuration)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

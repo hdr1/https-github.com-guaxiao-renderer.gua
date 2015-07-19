@@ -10,6 +10,19 @@
       <Platform>Win32</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\src\canvas.h" />
+    <ClInclude Include="..\..\src\color.h" />
+    <ClInclude Include="..\..\src\vector.h" />
+    <ClInclude Include="..\..\src\window.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\platform\win\main.cpp" />
+    <ClCompile Include="..\..\src\canvas.cpp" />
+    <ClCompile Include="..\..\src\color.cpp" />
+    <ClCompile Include="..\..\src\vector.cpp" />
+    <ClCompile Include="..\..\src\window.cpp" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{21CCE5C8-A37F-48EE-8B1C-AD99046248CD}</ProjectGuid>
     <RootNamespace>renderergua</RootNamespace>
@@ -47,7 +60,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(ProjectDir)SDL-1.2.15\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\..\src;$(ProjectDir)..\..\platform\win;$(ProjectDir)..\..\platform\win\SDL-1.2.15\include</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -55,9 +68,13 @@
       <SubSystem>Console</SubSystem>
       <EntryPointSymbol>
       </EntryPointSymbol>
-      <AdditionalLibraryDirectories>$(ProjectDir)SDL-1.2.15\lib\$(PlatformTarget)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(ProjectDir)..\..\platform\win\SDL-1.2.15\vs2013-$(PlatformTarget)</AdditionalLibraryDirectories>
       <AdditionalDependencies>SDL.lib;SDLmain.lib</AdditionalDependencies>
     </Link>
+    <PostBuildEvent>
+      <Message>copy dlls</Message>
+      <Command>copy $(ProjectDir)..\..\platform\win\SDL-1.2.15\vs2013-$(PlatformTarget)\*.dll $(ProjectDir)$(Configuration)</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -66,30 +83,21 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(ProjectDir)SDL-1.2.15\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\..\src;$(ProjectDir)..\..\platform\win;$(ProjectDir)..\..\platform\win\SDL-1.2.15\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <AdditionalDependencies>SDL.lib;SDLmain.lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(ProjectDir)SDL-1.2.15\lib\$(PlatformTarget)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(ProjectDir)..\..\platform\win\SDL-1.2.15\vs2013-$(PlatformTarget)</AdditionalLibraryDirectories>
     </Link>
+    <PostBuildEvent>
+      <Message>copy dlls</Message>
+      <Command>copy $(ProjectDir)..\..\platform\win\SDL-1.2.15\vs2013-$(PlatformTarget)\*.dll $(ProjectDir)$(Configuration)</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="platform\win\main.cpp" />
-    <ClCompile Include="src\canvas.cpp" />
-    <ClCompile Include="src\color.cpp" />
-    <ClCompile Include="src\vector.cpp" />
-    <ClCompile Include="src\window.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="src\canvas.h" />
-    <ClInclude Include="src\color.h" />
-    <ClInclude Include="src\vector.h" />
-    <ClInclude Include="src\window.h" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
