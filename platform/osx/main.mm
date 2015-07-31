@@ -5,7 +5,7 @@
 
 int
 main(int argc, char *argv[]) {
-    Window win = Window();
+    Window win = Window(argc, argv);
     
     win.run();
     
