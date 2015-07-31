@@ -18,8 +18,10 @@ gua3d
 ```
 
 ### Linux
-```
-# do it yourself
+```shell
+# Depends on libsdl1.2-dev. For Ubuntu: sudo apt-get install libsdl1.2-dev.
+make linux
+./gua3d
 ```
 
 ## Licence
