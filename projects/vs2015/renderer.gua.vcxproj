@@ -11,17 +11,39 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\platform\win\main.h" />
     <ClInclude Include="..\..\src\canvas.h" />
     <ClInclude Include="..\..\src\color.h" />
+    <ClInclude Include="..\..\src\guafoundation.h" />
+    <ClInclude Include="..\..\src\guaimage.h" />
+    <ClInclude Include="..\..\src\guamath.h" />
+    <ClInclude Include="..\..\src\matrix.h" />
+    <ClInclude Include="..\..\src\mesh.h" />
+    <ClInclude Include="..\..\src\texture.h" />
     <ClInclude Include="..\..\src\vector.h" />
+    <ClInclude Include="..\..\src\vertex.h" />
     <ClInclude Include="..\..\src\window.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\platform\win\main.cpp" />
     <ClCompile Include="..\..\src\canvas.cpp" />
     <ClCompile Include="..\..\src\color.cpp" />
+    <ClCompile Include="..\..\src\guaimage.cpp" />
+    <ClCompile Include="..\..\src\mesh.cpp" />
+    <ClCompile Include="..\..\src\texture.cpp" />
     <ClCompile Include="..\..\src\vector.cpp" />
+    <ClCompile Include="..\..\src\vertex.cpp" />
     <ClCompile Include="..\..\src\window.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\illidan.gua3d">
+      <DeploymentContent>true</DeploymentContent>
+      <FileType>Text</FileType>
+    </None>
+    <None Include="..\..\illidan.guaimage">
+      <DeploymentContent>true</DeploymentContent>
+      <FileType>Text</FileType>
+    </None>
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{21CCE5C8-A37F-48EE-8B1C-AD99046248CD}</ProjectGuid>
@@ -72,8 +94,10 @@
       <AdditionalDependencies>SDL.lib;SDLmain.lib</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Message>copy dlls</Message>
-      <Command>copy $(ProjectDir)..\..\platform\win\SDL-1.2.15\vs2015-$(PlatformTarget)\*.dll $(ProjectDir)$(Configuration)</Command>
+      <Message>copy dlls and resources</Message>
+      <Command>copy $(ProjectDir)..\..\platform\win\SDL-1.2.15\vs2015-$(PlatformTarget)\*.dll $(ProjectDir)$(Configuration)
+copy $(ProjectDir)..\..\*.gua3d $(ProjectDir)$(Configuration)
+copy $(ProjectDir)..\..\*.guaimage $(ProjectDir)$(Configuration)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -94,8 +118,10 @@
       <AdditionalLibraryDirectories>$(ProjectDir)..\..\platform\win\SDL-1.2.15\vs2015-$(PlatformTarget)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
-      <Message>copy dlls</Message>
-      <Command>copy $(ProjectDir)..\..\platform\win\SDL-1.2.15\vs2015-$(PlatformTarget)\*.dll $(ProjectDir)$(Configuration)</Command>
+      <Message>copy dlls and resources</Message>
+      <Command>copy $(ProjectDir)..\..\platform\win\SDL-1.2.15\vs2015-$(PlatformTarget)\*.dll $(ProjectDir)$(Configuration)
+copy $(ProjectDir)..\..\*.gua3d $(ProjectDir)$(Configuration)
+copy $(ProjectDir)..\..\*.guaimage $(ProjectDir)$(Configuration)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
