@@ -9,7 +9,11 @@ GUA3D := \
 src/window.cpp \
 src/canvas.cpp \
 src/color.cpp \
-src/vector.cpp
+src/vector.cpp \
+src/vertex.cpp \
+src/mesh.cpp \
+src/texture.cpp \
+src/guaimage.cpp
 
 
 SRC := $(GUA3D)
@@ -35,6 +39,15 @@ osx : LDFLAGS += $(FRAMEWORKS)
 osx : SRC += platform/osx/main.mm platform/osx/SDLMain.m
 
 osx : $(SRC) gua
+
+
+linux : OS := LINUX
+linux : TARGET := gua3d
+linux : CFLAGS += -std=c++11
+linux : LDFLAGS += -lSDLmain -lSDL
+linux : SRC += platform/linux/main.cpp
+
+linux : $(SRC) gua
 
 
 gua :

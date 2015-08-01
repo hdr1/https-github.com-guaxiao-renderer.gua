@@ -1,6 +1,11 @@
 # renderer.gua
 software 3D renderer
 
+## Screenshots
+![Jelly Cube](https://raw.githubusercontent.com/guaxiao/renderer.gua/dev/screenshots/jellycube.png)
+![Illidan Wireframe](https://raw.githubusercontent.com/guaxiao/renderer.gua/dev/screenshots/illidan_wireframe.png)
+![Illidan](https://raw.githubusercontent.com/guaxiao/renderer.gua/dev/screenshots/illidan.png)
+
 
 ## Usage
 
@@ -27,8 +32,10 @@ note: `Debug` config will have a console window, `Release` config won't
 tested with `vs2013` and `vs2015` under `winodws 8.1`
 
 ### Linux
-```
-# do it yourself
+```shell
+# Depends on libsdl1.2-dev. For Ubuntu: sudo apt-get install libsdl1.2-dev.
+make linux
+./gua3d
 ```
 
 ## Licence
