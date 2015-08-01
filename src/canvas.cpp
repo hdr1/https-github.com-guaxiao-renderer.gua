@@ -47,7 +47,7 @@ Canvas::drawLine(const Vertex &v1, const Vertex &v2) {
     int dx = x2 - x1;
     int dy = y2 - y1;
 
-    if(fabs(dx) > fabs(dy)) {
+    if(abs(dx) > abs(dy)) {
         int sign = x2 - x1 > 0 ? 1 : -1;
         float ratio = 0;
         if (dx != 0) {
