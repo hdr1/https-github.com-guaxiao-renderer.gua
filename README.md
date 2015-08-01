@@ -1,6 +1,11 @@
 # renderer.gua
 software 3D renderer
 
+## Screenshots
+![Jelly Cube](https://raw.githubusercontent.com/guaxiao/renderer.gua/dev/screenshots/jellycube.png)
+![Illidan Wireframe](https://raw.githubusercontent.com/guaxiao/renderer.gua/dev/screenshots/illidan_wireframe.png)
+![Illidan](https://raw.githubusercontent.com/guaxiao/renderer.gua/dev/screenshots/illidan.png)
+
 
 ## Usage
 
@@ -18,8 +23,10 @@ gua3d
 ```
 
 ### Linux
-```
-# do it yourself
+```shell
+# Depends on libsdl1.2-dev. For Ubuntu: sudo apt-get install libsdl1.2-dev.
+make linux
+./gua3d
 ```
 
 ## Licence
