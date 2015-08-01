@@ -151,8 +151,8 @@ Canvas::drawMesh(const Mesh &mesh) {
     static const auto cameraTarget = Vector(0, 0, 0);
     static const auto cameraUp = Vector(0, 1, 0);
 
-    auto view = Matrix::lookAtLH(cameraPosition, cameraTarget, cameraUp);
-    auto projection = Matrix::perspectiveFovLH(radiansFromDegrees(45), _width / _height, 0.1, 1);
+    static auto view = Matrix::lookAtLH(cameraPosition, cameraTarget, cameraUp);
+    static auto projection = Matrix::perspectiveFovLH(radiansFromDegrees(45), _width / _height, 0.1, 1);
     auto rotation = Matrix::rotation(mesh.rotation);
     auto translation = Matrix::translation(mesh.position);
     auto scale = Matrix::scale(mesh.scale);
@@ -160,7 +160,7 @@ Canvas::drawMesh(const Mesh &mesh) {
     auto world = scale * rotation * translation;
     auto transform = world * view * projection;
     
-    for(int i = 0; i < mesh.indices.size(); i += 3) {
+    for(unsigned int i = 0; i < mesh.indices.size(); i += 3) {
         const Vertex &a = mesh.vertices[mesh.indices[i]];
         const Vertex &b = mesh.vertices[mesh.indices[i+1]];
         const Vertex &c = mesh.vertices[mesh.indices[i+2]];
