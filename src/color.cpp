@@ -24,10 +24,10 @@ Color::uint32() const {
 
 #ifdef __APPLE__
     uint32_t value = (B << 24) | (G << 16) | (R << 8) | A;
-#else
-    uint32_t value = (A << 24) | (R << 16) | (G << 8) | B;
     // visual studio
 #elif _WIN32
+    uint32_t value = (A << 24) | (R << 16) | (G << 8) | B;
+#else
     uint32_t value = (A << 24) | (R << 16) | (G << 8) | B;
 #endif
     return value;
