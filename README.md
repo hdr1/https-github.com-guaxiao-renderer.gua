@@ -1,6 +1,11 @@
 # renderer.gua
 software 3D renderer
 
+## Screenshots
+![Jelly Cube](https://raw.githubusercontent.com/guaxiao/renderer.gua/dev/screenshots/jellycube.png)
+![Illidan Wireframe](https://raw.githubusercontent.com/guaxiao/renderer.gua/dev/screenshots/illidan_wireframe.png)
+![Illidan](https://raw.githubusercontent.com/guaxiao/renderer.gua/dev/screenshots/illidan.png)
+
 
 ## Usage
 
