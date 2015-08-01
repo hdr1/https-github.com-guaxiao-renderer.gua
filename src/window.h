@@ -4,28 +4,40 @@
 
 #include <cstdio>
 #include <cstring>
+#include <vector>
 
 #include "canvas.h"
 #include "color.h"
 #include "vector.h"
+#include "vertex.h"
+#include "mesh.h"
+#include "guamath.h"
 
 
-static const int kWindowWidth = 640;
-static const int kWindowHeight = 480;
+using std::vector;
 
+static const int kWindowWidth = 800;
+static const int kWindowHeight = 600;
 
 class Window {
     SDL_Surface *_screen;
     Canvas *_canvas;
+    Mesh *_mesh;
 
     int _width;
     int _height;
 
     bool _running;
     
-public:
+    bool pressedW = false;
+    bool pressedS = false;
+    bool pressedUp = false;
+    bool pressedDown = false;
+    bool pressedLeft = false;
+    bool pressedRight = false;
     
-    Window(int width=kWindowWidth, int height=kWindowHeight, const char *title="Screen") {
+public:
+    Window(int argc, char *argv[], int width=kWindowWidth, int height=kWindowHeight, const char *title="Screen") {
         // init
         if(SDL_Init(SDL_INIT_VIDEO) != 0) {
             fprintf(stderr, "SDL_Init failed\n");
@@ -46,10 +58,19 @@ public:
         _canvas = new Canvas((uint32_t *)screen->pixels, width, height);
         
         _running = true;
+        
+        const char *modelPath = "illidan.gua3d";
+        const char *texturePath = "illidan.guaimage";
+        if(argc > 2) {
+            modelPath = argv[1];
+            texturePath = argv[2];
+        }
+        _mesh = new Mesh(modelPath, texturePath);
     };
     
-    ~Window() {
+    virtual ~Window() {
         delete _canvas;
+        delete _mesh;
     };
     
     void run() {
@@ -73,16 +94,19 @@ public:
     };
     
     void update() {
-
+        static const float transform = 0.05;
+        
+        _mesh->rotation.x += pressedUp ? transform : 0;
+        _mesh->rotation.x -= pressedDown ? transform : 0;
+        _mesh->rotation.y += pressedLeft ? transform : 0;
+        _mesh->rotation.y -= pressedRight ? transform : 0;
+        
+        _mesh->position.y += pressedW ? transform : 0;
+        _mesh->position.y -= pressedS ? transform : 0;
     };
     
     void draw() {
-        Vector v = Vector();
-        for (int i = 0; i < 255; ++i) {
-            v.x = i;
-            v.y = i;
-            _canvas->drawPoint(v, Color(i/255.0f, 0, 0, 1));
-        }
+        _canvas->drawMesh(*_mesh);
     };
     
     void show() {
@@ -96,18 +120,36 @@ public:
     
     void onKeyEvent(const SDL_Event *event) {
         SDLKey key = (*event).key.keysym.sym;
+        bool keyIsDown = (event->type == SDL_KEYDOWN);
         if (key == SDLK_ESCAPE) {
             quit();
+        } else if (key == SDLK_UP) {
+            pressedUp = keyIsDown;
+        } else if (key == SDLK_DOWN) {
+            pressedDown = keyIsDown;
+        } else if (key == SDLK_LEFT) {
+            pressedLeft = keyIsDown;
+        } else if (key == SDLK_RIGHT) {
+            pressedRight = keyIsDown;
+        } else if(key == SDLK_w) {
+            pressedW = keyIsDown;
+        } else if(key == SDLK_s) {
+            pressedS = keyIsDown;
         }
     };
     
+    void onMouseEvent(const SDL_Event *event) {
+    };
+
     void HandleEvent(const SDL_Event *event) {
         unsigned char eventType = event->type;
         
         if (eventType == SDL_QUIT) {
             quit();
-        } else if(eventType == SDL_KEYDOWN) {
+        } else if(eventType == SDL_KEYDOWN || eventType == SDL_KEYUP) {
             onKeyEvent(event);
+        } else if (eventType == SDL_MOUSEBUTTONDOWN) {
+            onMouseEvent(event);
         }
     };
     
