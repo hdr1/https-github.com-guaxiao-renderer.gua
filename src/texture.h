@@ -2,7 +2,7 @@
 #define __Gua__texture__
 
 
-#include "Color.h"
+#include "color.h"
 
 
 class Texture {

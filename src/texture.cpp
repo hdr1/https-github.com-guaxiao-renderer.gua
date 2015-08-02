@@ -1,6 +1,6 @@
 #include <cstring>
 
-#include "Texture.h"
+#include "texture.h"
 #include "guaimage.h"
 
 
