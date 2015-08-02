@@ -18,7 +18,7 @@ Texture::Texture(const char *path) {
 
 Color
 Texture::sample(float u, float v) const {
-    if (_pixels != nullptr) {
+    if (_pixels != NULL) {
         int tu = abs((int)(u * (_width - 1)));
         int tv = abs((int)(v * (_height - 1)));
 
