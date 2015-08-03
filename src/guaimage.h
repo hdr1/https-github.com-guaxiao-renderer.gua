@@ -2,7 +2,7 @@
 #define __Gua__guaimage__
 
 
-#include "Color.h"
+#include "color.h"
 
 
 class GuaImage {
