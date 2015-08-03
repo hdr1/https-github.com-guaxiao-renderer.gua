@@ -11,7 +11,7 @@
 void
 Canvas::clear() {
     memset(_pixels, 0, sizeof(uint32_t) * _width * _height);
-    memset(_depthBuffer, (int)FLT_MAX, sizeof(float) * _bufferSize);
+    std::fill(_depthBuffer, _depthBuffer + _bufferSize, FLT_MAX);
 }
 
 void
@@ -47,7 +47,7 @@ Canvas::drawLine(const Vertex &v1, const Vertex &v2) {
     int dx = x2 - x1;
     int dy = y2 - y1;
 
-    if(fabs(dx) > fabs(dy)) {
+    if(abs(dx) > abs(dy)) {
         int sign = x2 - x1 > 0 ? 1 : -1;
         float ratio = 0;
         if (dx != 0) {
