@@ -18,6 +18,8 @@
 		4260457C1B6F0907006DB223 /* vector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 426045711B6F0907006DB223 /* vector.cpp */; };
 		4260457D1B6F0907006DB223 /* vertex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 426045731B6F0907006DB223 /* vertex.cpp */; };
 		4260457E1B6F0907006DB223 /* window.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 426045751B6F0907006DB223 /* window.cpp */; };
+		426045811B6F1D19006DB223 /* illidan.gua3d in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4260457F1B6F1D18006DB223 /* illidan.gua3d */; };
+		426045821B6F1D19006DB223 /* illidan.guaimage in CopyFiles */ = {isa = PBXBuildFile; fileRef = 426045801B6F1D18006DB223 /* illidan.guaimage */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -27,6 +29,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				426045811B6F1D19006DB223 /* illidan.gua3d in CopyFiles */,
+				426045821B6F1D19006DB223 /* illidan.guaimage in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -57,6 +61,8 @@
 		426045741B6F0907006DB223 /* vertex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = vertex.h; path = ../../src/vertex.h; sourceTree = "<group>"; };
 		426045751B6F0907006DB223 /* window.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = window.cpp; path = ../../src/window.cpp; sourceTree = "<group>"; };
 		426045761B6F0907006DB223 /* window.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = window.h; path = ../../src/window.h; sourceTree = "<group>"; };
+		4260457F1B6F1D18006DB223 /* illidan.gua3d */ = {isa = PBXFileReference; lastKnownFileType = text; name = illidan.gua3d; path = ../../illidan.gua3d; sourceTree = "<group>"; };
+		426045801B6F1D18006DB223 /* illidan.guaimage */ = {isa = PBXFileReference; lastKnownFileType = text; name = illidan.guaimage; path = ../../illidan.guaimage; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +80,8 @@
 		4235A8661B6F038F00CA3987 = {
 			isa = PBXGroup;
 			children = (
+				4260457F1B6F1D18006DB223 /* illidan.gua3d */,
+				426045801B6F1D18006DB223 /* illidan.guaimage */,
 				4260455D1B6F08BD006DB223 /* src */,
 				4235A8941B6F040A00CA3987 /* SDL.framework */,
 				4235A8701B6F038F00CA3987 /* Products */,
