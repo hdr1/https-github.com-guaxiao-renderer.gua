@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
       <Configuration>Debug</Configuration>
@@ -10,59 +10,25 @@
       <Platform>Win32</Platform>
     </ProjectConfiguration>
   </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\..\platform\win\main.h" />
-    <ClInclude Include="..\..\src\canvas.h" />
-    <ClInclude Include="..\..\src\color.h" />
-    <ClInclude Include="..\..\src\guafoundation.h" />
-    <ClInclude Include="..\..\src\guaimage.h" />
-    <ClInclude Include="..\..\src\guamath.h" />
-    <ClInclude Include="..\..\src\matrix.h" />
-    <ClInclude Include="..\..\src\mesh.h" />
-    <ClInclude Include="..\..\src\texture.h" />
-    <ClInclude Include="..\..\src\vector.h" />
-    <ClInclude Include="..\..\src\vertex.h" />
-    <ClInclude Include="..\..\src\window.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="..\..\platform\win\main.cpp" />
-    <ClCompile Include="..\..\src\canvas.cpp" />
-    <ClCompile Include="..\..\src\color.cpp" />
-    <ClCompile Include="..\..\src\guaimage.cpp" />
-    <ClCompile Include="..\..\src\mesh.cpp" />
-    <ClCompile Include="..\..\src\texture.cpp" />
-    <ClCompile Include="..\..\src\vector.cpp" />
-    <ClCompile Include="..\..\src\vertex.cpp" />
-    <ClCompile Include="..\..\src\window.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="..\..\illidan.gua3d">
-      <DeploymentContent>true</DeploymentContent>
-      <FileType>Text</FileType>
-    </None>
-    <None Include="..\..\illidan.guaimage">
-      <DeploymentContent>true</DeploymentContent>
-      <FileType>Text</FileType>
-    </None>
-  </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{21CCE5C8-A37F-48EE-8B1C-AD99046248CD}</ProjectGuid>
+    <ProjectGuid>{73F3FF23-764D-4C82-96CA-F46867D6DDA6}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
     <RootNamespace>renderergua</RootNamespace>
-    <TargetPlatformVersion>10.0.10069.0</TargetPlatformVersion>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v140</PlatformToolset>
-    <CharacterSet>MultiByte</CharacterSet>
+    <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v140</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
-    <CharacterSet>MultiByte</CharacterSet>
+    <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -76,54 +42,92 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(ProjectDir)..\..\src;$(ProjectDir)..\..\platform\win;$(ProjectDir)..\..\platform\win\SDL-1.2.15\include</AdditionalIncludeDirectories>
-      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(SolutionDir)..\..\src;$(SolutionDir)..\..\platform\win;$(SolutionDir)..\..\platform\win\SDL-1.2.15\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
-      <EntryPointSymbol>
-      </EntryPointSymbol>
-      <AdditionalLibraryDirectories>$(ProjectDir)..\..\platform\win\SDL-1.2.15\vs2015-$(PlatformTarget)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL.lib;SDLmain.lib</AdditionalDependencies>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>SDL.lib;SDLmain.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)..\..\platform\win\SDL-1.2.15\vs2015-$(PlatformTarget)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
+      <Command>copy $(SolutionDir)..\..\platform\win\SDL-1.2.15\vs2015-$(PlatformTarget)\*.dll $(SolutionDir)$(Configuration)
+copy $(SolutionDir)..\..\*.gua3d $(SolutionDir)$(Configuration)
+copy $(SolutionDir)..\..\*.guaimage $(SolutionDir)$(Configuration)</Command>
+    </PostBuildEvent>
+    <PostBuildEvent>
       <Message>copy dlls and resources</Message>
-      <Command>copy $(ProjectDir)..\..\platform\win\SDL-1.2.15\vs2015-$(PlatformTarget)\*.dll $(ProjectDir)$(Configuration)
-copy $(ProjectDir)..\..\*.gua3d $(ProjectDir)$(Configuration)
-copy $(ProjectDir)..\..\*.guaimage $(ProjectDir)$(Configuration)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(ProjectDir)..\..\src;$(ProjectDir)..\..\platform\win;$(ProjectDir)..\..\platform\win\SDL-1.2.15\include</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(SolutionDir)..\..\src;$(SolutionDir)..\..\platform\win;$(SolutionDir)..\..\platform\win\SDL-1.2.15\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
+      <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <SubSystem>Windows</SubSystem>
-      <AdditionalDependencies>SDL.lib;SDLmain.lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(ProjectDir)..\..\platform\win\SDL-1.2.15\vs2015-$(PlatformTarget)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)..\..\platform\win\SDL-1.2.15\vs2015-$(PlatformTarget)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL.lib;SDLmain.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
+      <Command>copy $(SolutionDir)..\..\platform\win\SDL-1.2.15\vs2015-$(PlatformTarget)\*.dll $(SolutionDir)$(Configuration)
+copy $(SolutionDir)..\..\*.gua3d $(SolutionDir)$(Configuration)
+copy $(SolutionDir)..\..\*.guaimage $(SolutionDir)$(Configuration)</Command>
+    </PostBuildEvent>
+    <PostBuildEvent>
       <Message>copy dlls and resources</Message>
-      <Command>copy $(ProjectDir)..\..\platform\win\SDL-1.2.15\vs2015-$(PlatformTarget)\*.dll $(ProjectDir)$(Configuration)
-copy $(ProjectDir)..\..\*.gua3d $(ProjectDir)$(Configuration)
-copy $(ProjectDir)..\..\*.guaimage $(ProjectDir)$(Configuration)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\platform\win\main.cpp" />
+    <ClCompile Include="..\..\..\src\canvas.cpp" />
+    <ClCompile Include="..\..\..\src\color.cpp" />
+    <ClCompile Include="..\..\..\src\guaimage.cpp" />
+    <ClCompile Include="..\..\..\src\mesh.cpp" />
+    <ClCompile Include="..\..\..\src\texture.cpp" />
+    <ClCompile Include="..\..\..\src\vector.cpp" />
+    <ClCompile Include="..\..\..\src\vertex.cpp" />
+    <ClCompile Include="..\..\..\src\window.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\src\canvas.h" />
+    <ClInclude Include="..\..\..\src\color.h" />
+    <ClInclude Include="..\..\..\src\guafoundation.h" />
+    <ClInclude Include="..\..\..\src\guaimage.h" />
+    <ClInclude Include="..\..\..\src\guamath.h" />
+    <ClInclude Include="..\..\..\src\matrix.h" />
+    <ClInclude Include="..\..\..\src\mesh.h" />
+    <ClInclude Include="..\..\..\src\texture.h" />
+    <ClInclude Include="..\..\..\src\vector.h" />
+    <ClInclude Include="..\..\..\src\vertex.h" />
+    <ClInclude Include="..\..\..\src\window.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\illidan.gua3d" />
+    <None Include="..\..\..\illidan.guaimage" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
