@@ -6,6 +6,11 @@ tests
 __MACOSX
 .DS_Store
 
+# Xcode
+projects/Xcode6/renderer.gua.xcodeproj/project.xcworkspace/
+projects/Xcode6/renderer.gua.xcodeproj/xcuserdata
+
+
 # Windows Mingw output
 stdout.txt
 

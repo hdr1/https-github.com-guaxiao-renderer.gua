@@ -11,7 +11,7 @@
 void
 Canvas::clear() {
     memset(_pixels, 0, sizeof(uint32_t) * _width * _height);
-	std::fill(_depthBuffer, _depthBuffer + _bufferSize, FLT_MAX);
+    std::fill(_depthBuffer, _depthBuffer + _bufferSize, FLT_MAX);
 }
 
 void
