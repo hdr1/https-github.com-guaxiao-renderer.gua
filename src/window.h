@@ -31,6 +31,8 @@ class Window {
     
     bool pressedW = false;
     bool pressedS = false;
+    bool pressedA = false;
+    bool pressedD = false;
     bool pressedUp = false;
     bool pressedDown = false;
     bool pressedLeft = false;
@@ -103,6 +105,8 @@ public:
         
         _mesh->position.y += pressedW ? transform : 0;
         _mesh->position.y -= pressedS ? transform : 0;
+        _mesh->position.x -= pressedA ? transform : 0;
+        _mesh->position.x += pressedD ? transform : 0;
     };
     
     void draw() {
@@ -135,6 +139,10 @@ public:
             pressedW = keyIsDown;
         } else if(key == SDLK_s) {
             pressedS = keyIsDown;
+        } else if (key == SDLK_a){
+            pressedA = keyIsDown;
+        } else if (key == SDLK_d) {
+            pressedD = keyIsDown;
         }
     };
     
