@@ -1,5 +1,5 @@
 # renderer.gua
-software 3D renderer
+Software 3D Renderer in C++ on Windows, OSX and Linux or other popular flavors of Unix that SDL supports
 
 ## Screenshots
 ![Jelly Cube](https://raw.githubusercontent.com/guaxiao/renderer.gua/dev/screenshots/jellycube.png)
@@ -10,9 +10,20 @@ software 3D renderer
 ## Usage
 
 ### OS X
+```
+open projects/Xcode6/renderer.gua.xcodeproj
+build and run
+
+```
+or
 ```shell
+# install library
 sh install_mac_sdl.sh 
+
+# build from command line
 make osx
+
+# run
 ./gua3d
 ```
 
